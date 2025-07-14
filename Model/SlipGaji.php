@@ -41,13 +41,13 @@ class SlipGaji {
     }
 
     public function generateNoRef() {
-        $sql = "SELECT MAX(CAST(SUBSTRING(no_ref, 4) AS UNSIGNED)) as max_number FROM slip_gaji WHERE no_ref LIKE 'SLG%'";
+        $sql = "SELECT MAX(no_ref) as max_number FROM slip_gaji";
         $statement = $this->db->prepare($sql);
         $statement->execute();
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         
         $nextNumber = ($result['max_number'] ?? 0) + 1;
-        return 'SLG' . str_pad($nextNumber, 5, '0', STR_PAD_LEFT);
+        return $nextNumber; // Return integer langsung
     }
 
     public function checkExisting($kode_karyawan, $periode) {

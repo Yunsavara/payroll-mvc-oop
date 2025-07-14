@@ -16,6 +16,7 @@ ob_start();
                     <div class="mb-3">
                         <label for="no_ref" class="form-label">No Referensi</label>
                         <input type="text" class="form-control" id="no_ref" name="no_ref" value="<?= $no_ref ?>" readonly>
+                        <small class="text-muted">Auto generate: <?= $no_ref ?></small>
                     </div>
                 </div>
                 <div class="col-md-4">
